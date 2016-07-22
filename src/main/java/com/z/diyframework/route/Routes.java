@@ -23,7 +23,7 @@ public class Routes {
         routeList.remove(route);
     }
     
-    public void addRoute(String path, Method method, Object controller) {
+    public void addRoute(String path, Method method, Class<?> controller) {
         Route r = new Route();
         r.setController(controller);
         r.setMethod(method);

@@ -2,7 +2,7 @@
  * Chsi
  * Created on 2016年7月21日
  */
-package com.z.diyframework.test;
+package com.test;
 
 import com.z.diyframework.Master;
 import com.z.diyframework.boot.Bootstrap;
@@ -15,8 +15,6 @@ public class MainTest implements Bootstrap {
 
     @Override
     public void init(Master master) {
-        TestController testController = new TestController();
-        master.addRoute("/dd", "index", testController);
+        master.addRoute("/dd", "index", TestController.class);
     }
-
 }

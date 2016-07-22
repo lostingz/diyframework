@@ -7,7 +7,7 @@
 		<filter-class>com.z.diyframework.filter.DiyFilter</filter-class>
 		<init-param>
 			<param-name>bootClassName</param-name>
-			<param-value>com.z.diyframework.test.MainTest</param-value>
+			<param-value>com.test.MainTest</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>

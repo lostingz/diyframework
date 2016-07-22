@@ -40,9 +40,9 @@ public final class Master {
         this.routes.addRoute(route);
     }
 
-    public Master addRoute(String path, String methodName, Object controller) {
+    public Master addRoute(String path, String methodName, Class<?> controller) {
         try {
-            Method method = controller.getClass().getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
+            Method method = controller.getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
             this.routes.addRoute(path, method, controller);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();

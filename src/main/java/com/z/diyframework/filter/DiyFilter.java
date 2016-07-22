@@ -5,7 +5,6 @@
 package com.z.diyframework.filter;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.logging.Logger;
@@ -72,16 +71,13 @@ public class DiyFilter implements Filter {
     }
 
     private void handle(HttpServletRequest request, HttpServletResponse response, Route route) {
-        Object controller = route.getController();
+        Class<?> cls = route.getController();
         Method method = route.getMethod();
-        log.info("Controller:" + controller.getClass().getCanonicalName() + "  Method:" + method.getName());
+        log.info("Controller:" + cls.getCanonicalName() + "  Method:" + method.getName());
         try {
+            Object controller = Class.forName(cls.getCanonicalName()).newInstance();
             method.invoke(controller, request, response);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -97,11 +93,7 @@ public class DiyFilter implements Filter {
                 Class<?> cls = Class.forName(className);
                 Bootstrap bootstrap = (Bootstrap) cls.newInstance();
                 return bootstrap;
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

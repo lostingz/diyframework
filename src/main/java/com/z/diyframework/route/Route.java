@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 public class Route {
     private String path;
     private Method method;
-    private Object controller;
+    private Class<?> controller;
 
     public String getPath() {
         return path;
@@ -31,11 +31,11 @@ public class Route {
         this.method = method;
     }
 
-    public Object getController() {
+    public Class<?> getController() {
         return controller;
     }
 
-    public void setController(Object controller) {
+    public void setController(Class<?> controller) {
         this.controller = controller;
     }
 }

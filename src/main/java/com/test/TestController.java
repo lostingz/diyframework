@@ -2,7 +2,7 @@
  * Chsi
  * Created on 2016年7月21日
  */
-package com.z.diyframework.test;
+package com.test;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,9 +12,10 @@ import javax.servlet.http.HttpServletResponse;
  * @version $Id$
  */
 public class TestController {
-    public void index(HttpServletRequest request, HttpServletResponse response) {
+    public String index(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("index");
         System.out.println(request.getParameter("name"));
+        return "ddd";
     }
 
     public void hello(HttpServletRequest request, HttpServletResponse response) {
